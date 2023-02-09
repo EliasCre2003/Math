@@ -1,6 +1,6 @@
 package eliascregard.vectors;
 
-public class Vector {
+class Vector {
 
     private double[] parameters;
     private final int order;
@@ -125,17 +125,6 @@ public class Vector {
             dotProduct += vector1.parameters[i] * vector2.parameters[i];
         }
         return dotProduct;
-    }
-
-    public static Vector crossProduct(Vector vector1, Vector vector2) {
-        if (vector1.order != 3 || vector2.order != 3) {
-            throw new IllegalArgumentException("The order of the vectors must be equal to 3.");
-        }
-        double[] parameters = new double[3];
-        parameters[0] = vector1.parameters[1] * vector2.parameters[2] - vector1.parameters[2] * vector2.parameters[1];
-        parameters[1] = vector1.parameters[2] * vector2.parameters[0] - vector1.parameters[0] * vector2.parameters[2];
-        parameters[2] = vector1.parameters[0] * vector2.parameters[1] - vector1.parameters[1] * vector2.parameters[0];
-        return new Vector(parameters);
     }
 
     public static Vector orthogonalProjection(Vector vector1, Vector vector2) {

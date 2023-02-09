@@ -9,6 +9,9 @@ public class Vector3 extends Vector{
     public Vector3(Vector point1, Vector point2) {
         super(point2, point1);
     }
+    public Vector3() {
+        this(0, 0, 0);
+    }
 
     public double getX() {
         return getParameter(1);
@@ -58,8 +61,11 @@ public class Vector3 extends Vector{
         return (Vector3) Vector.scalarProduct(vector1, scalar);
     }
 
-    public static Vector3 crossProduct(Vector vector1, Vector vector2) {
-        return (Vector3) Vector.crossProduct(vector1, vector2);
+    public static Vector3 crossProduct(Vector3 vector1, Vector3 vector2) {
+        double x = vector1.getY() * vector2.getZ() - vector1.getZ() * vector2.getY();
+        double y = vector1.getZ() * vector2.getX() - vector1.getX() * vector2.getZ();
+        double z = vector1.getX() * vector2.getY() - vector1.getY() * vector2.getX();
+        return new Vector3(x, y, z);
     }
 
     public static Vector3 orthogonalProjection(Vector vector1, Vector vector2) {
